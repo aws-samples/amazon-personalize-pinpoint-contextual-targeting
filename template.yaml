@@ -1,0 +1,171 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  contextual-targeting
+
+  Sample SAM Template for contextual-targeting
+
+Parameters:
+  Email:
+    Type: String
+    AllowedPattern: "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$|^$)"
+    ConstraintDescription: "Must be a valid email address or blank"
+    Description: "Email to notify with personalize workflow results"
+    MaxLength: 50
+
+  PEVersion:
+    Type: String
+    AllowedPattern: "^v[0-9]\\.[0-9]\\.[0-9]$"
+    ConstraintDescription: "Must be a valid semantic version starting with the prefix letter v"
+    Description: "Semantic version the personalization engine (e.g. v1.2.0)"
+    Default: v1.2.0
+
+  SegmentImportPrefix:
+    Type: String
+    Default: pinpoint/
+    AllowedPattern: "^[a-zA-Z0-9_-]+/$"
+    ConstraintDescription: "Must be a valid S3 prefix ending with a /"
+    Description: Prefix of the Amazon S3 Bucket where new segment import files for Amazon Pinpoint will be placed.
+
+
+Resources:
+  PersonalizationEngineStack:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL: !Join
+        - ""
+        - - "https://s3.amazonaws.com/solutions-reference/maintaining-personalized-experiences-with-machine-learning/"
+          - !Ref PEVersion
+          - "/maintaining-personalized-experiences-with-machine-learning.template"
+      Parameters:
+        Email: !Ref Email
+
+
+  SegmentImportBucket:
+    Type: AWS::S3::Bucket
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W51
+            reason: Not public facing.
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  PinpointApplication:
+    Type: AWS::Pinpoint::App
+    Properties:
+      Name: "personalize"
+
+  PinpointImportStack:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL: "./pinpoint-import.yaml"
+      Parameters:
+        PinpointProjectId: !Ref PinpointApplication
+        FileDropS3Bucket: !Ref SegmentImportBucket
+        FileDropS3Prefix: !Ref SegmentImportPrefix
+  
+  BatchSegmentPostprocessing:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      DefinitionUri: statemachine/batchsegment-postprocessing.asl.json
+      DefinitionSubstitutions:
+        PinpointApplicationId: !Ref PinpointApplication
+        PersonalizeExtractSegmentFunctionArn: !GetAtt PersonalizeExtractSegmentFunction.Arn
+        PersonalizeImportSegmentFunctionArn: !GetAtt PersonalizeImportSegmentFunction.Arn
+      Tracing:
+        Enabled: true
+      Events:
+        EBRule:
+          Type: EventBridgeRule
+          Properties:
+            EventBusName: !GetAtt PersonalizationEngineStack.Outputs.EventBusArn
+            InputPath: $.detail
+            Pattern:
+              source:
+                - solutions.aws.personalize
+              detail-type:
+                - Personalize Batch Segment Job State Change 
+              detail:
+                Status: 
+                  - ACTIVE
+      Policies:
+        - CloudWatchLogsFullAccess
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PersonalizeExtractSegmentFunction   
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PersonalizeImportSegmentFunction                   
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - personalize:DescribeBatchSegmentJob
+              Resource: "*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action:
+                - mobiletargeting:GetUserEndpoints
+              Resource: !Join
+                - "/"
+                - - !GetAtt PinpointApplication.Arn
+                  - "*"
+
+  PersonalizeExtractSegmentFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: Not public facing.
+    Properties:
+      ReservedConcurrentExecutions: 1
+      CodeUri: functions/personalize-extract-segment/
+      Handler: index.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - arm64
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !GetAtt PersonalizationEngineStack.Outputs.PersonalizeBucketName
+
+  PersonalizeImportSegmentFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W89
+            reason: Not public facing.
+    Properties:
+      ReservedConcurrentExecutions: 1
+      CodeUri: functions/personalize-import-segment/
+      Handler: index.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - arm64
+      Policies:
+        - S3WritePolicy:
+            BucketName: !Ref SegmentImportBucket 
+      Environment:
+        Variables:
+          SEGMENT_IMPORT_BUCKET: !Ref SegmentImportBucket
+          SEGMENT_IMPORT_PREFIX: !Ref SegmentImportPrefix
+
+Outputs:
+  PersonalizeBucketName:
+    Description: "Name of the bucket for personalize training input and inference output data"
+    Value: !GetAtt PersonalizationEngineStack.Outputs.PersonalizeBucketName
+  PersonalizationEngineEventbusArn:
+    Description: "Arn of the EventBridge eventbus of the personalization engine"
+    Value: !GetAtt PersonalizationEngineStack.Outputs.EventBusArn    
+  SegmentImportBucket:
+    Description: "Name of the bucket for pinpoint segment import"
+    Value: !Ref SegmentImportBucket
