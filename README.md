@@ -74,9 +74,11 @@ The users dataset contains all known users identified by a `USER_ID`. This datas
 
 ```csv
 USER_ID,GENDER,E_MAIL,AGE
-148,Female,"success+148@simulator.amazonses.com",54
-304,Male,"success+304@simulator.amazonses.com",35
-327,Male,"success+327@simulator.amazonses.com",30
+1,Female,success1@simulator.amazonses.com,21
+2,Female,success+2@simulator.amazonses.com,35
+3,Male,success+3@simulator.amazonses.com,37
+4,Female,success+4@simulator.amazonses.com,47
+5,Agender,success+5@simulator.amazonses.com,50
 ...
 ```
 
@@ -86,9 +88,11 @@ To map Amazon Pinpoint endpoints to users in Amazon Personalize, it is important
 
 ```csv
 User.UserId,ChannelType,User.UserAttributes.Gender,Address,User.UserAttributes.Age
-148,EMAIL,Female,"success+148@simulator.amazonses.com",54
-304,EMAIL,Male,"success+304@simulator.amazonses.com",35
-327,EMAIL,Male,"success+327@simulator.amazonses.com",30
+1,EMAIL,Female,success+1@simulator.amazonses.com,21
+2,EMAIL,Female,success+2@simulator.amazonses.com,35
+3,EMAIL,Male,success+3@simulator.amazonses.com,37
+4,EMAIL,Female,success+4@simulator.amazonses.com,47
+5,EMAIL,Agender,success+5@simulator.amazonses.com,50
 ...
 ```
 
