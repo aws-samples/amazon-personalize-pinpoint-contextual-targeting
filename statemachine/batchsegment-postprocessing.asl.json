@@ -1,0 +1,48 @@
+{
+  "Comment": "...",
+  "StartAt": "Describe Batch Segment Job",
+  "States": {
+    "Describe Batch Segment Job": {
+      "Type": "Task",
+      "Next": "Extract segment",
+      "Parameters": {
+        "BatchSegmentJobArn.$": "$.Arn"
+      },
+      "Resource": "arn:aws:states:::aws-sdk:personalize:describeBatchSegmentJob",
+      "ResultSelector": {
+        "jobOutputFile.$": "States.Format('{}job_config.json.out', $.BatchSegmentJob.JobOutput.S3DataDestination.Path)"
+      }
+    },
+    "Extract segment": {
+      "Type": "Task",
+      "Resource": "${PersonalizeExtractSegmentFunctionArn}",
+      "Next": "for each user"
+    },
+    "for each user": {
+      "Type": "Map",
+      "Iterator": {
+        "StartAt": "Get user endpoints",
+        "States": {
+          "Get user endpoints": {
+            "Type": "Task",
+            "End": true,
+            "Parameters": {
+              "ApplicationId": "${PinpointApplicationId}",
+              "UserId.$": "$"
+            },
+            "Resource": "arn:aws:states:::aws-sdk:pinpoint:getUserEndpoints",
+            "OutputPath": "$.EndpointsResponse.Item[0].Id"
+          }
+        }
+      },
+      "ItemsPath": "$.users",
+      "Next": "Write segment to s3",
+      "ResultPath": "$.endpoints"
+    },
+    "Write segment to s3": {
+      "Type": "Task",
+      "Resource": "${PersonalizeImportSegmentFunctionArn}",
+      "End": true
+    }
+  }
+}
