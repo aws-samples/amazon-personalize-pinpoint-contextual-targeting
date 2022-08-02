@@ -1,0 +1,101 @@
+ITEM_ID,TITLE,RELEASE_YEAR,CREATION_TIMESTAMP,GENRES
+1,Snow on Tha Bluff,2010,1208837486,Crime|Drama
+2,"N Word, The",2004,1213883254,Documentary
+3,Chiedimi se sono felice,1992,828734629,Comedy|Drama
+4,Stuck ,1998,826719542,Documentary
+5,Zouzou,2007,820958634,Comedy
+6,Wuthering Heights,1989,1042781390,Drama|Romance
+7,"Stuff, The",2003,1066499374,Comedy|Horror|Mystery|Sci-Fi
+8,Duplicity,1994,1586923927,Crime|Romance|Thriller
+9,Earth vs. The Spider,2008,1504090155,Horror
+10,10 Mountains 10 Years,2007,1099308170,Documentary
+11,Antboy,1990,1262747860,Adventure|Children|Comedy
+12,Boo to You Too! Winnie the Pooh,1989,1001381909,(no genres listed)
+13,David and Bathsheba,1995,1123939463,Drama|Romance
+14,Seven Years Bad Luck,1993,1163854725,Comedy
+15,My Kidnapper,2002,1653740207,Documentary
+16,Suburbia,1992,1552095721,Drama
+17,My Life,2007,1166031172,Drama
+18,Diary of a Chambermaid,2008,1001137674,Drama
+19,"Toast of New York, The",2003,1371168910,Comedy|Drama|War
+20,Illegal,2012,1012862403,Crime|Drama|Film-Noir
+21,Iron Man 2,1994,1190141304,Action|Adventure|Sci-Fi|Thriller|IMAX
+22,Manny,1966,1029551989,Documentary|Drama
+23,"King's Speech, The",2012,1453361184,Drama
+24,Sex Galaxy,2011,1051172215,Comedy|Sci-Fi
+25,Birdman,2009,845919507,Comedy|Drama
+26,Hiroshima ,1999,1257023562,Documentary
+27,Cheech and Chong's Up in Smoke,2001,1318982781,Comedy
+28,"To Have, or Not (En avoir (ou pas))",2010,911714650,Drama
+29,Gummo,1994,1430084564,Drama
+30,Casablanca Express,2006,1571588862,Action|War
+31,From the Sky Down,1995,871624752,Documentary
+32,"Winslow Boy, The",1985,789164310,Drama
+33,"Land That Time Forgot, The",1985,1533566099,Adventure|Sci-Fi
+34,"Show, The",2011,1334796053,Documentary
+35,Answers to Nothing,1993,1199292440,Drama|Mystery
+36,Ten Minutes Older: The Trumpet,2000,799021032,Drama
+37,"Usual Suspects, The",1997,1454661483,Crime|Mystery|Thriller
+38,Rent-a-Kid,2005,1481884154,Comedy
+39,Zatoichi,2004,829021138,Action|Drama
+40,I giorni contati,2003,1634057349,(no genres listed)
+41,Geronimo: An American Legend,1999,1526297367,Drama|Western
+42,"Crouching Tiger, Hidden Dragon (Wo hu cang long)",2000,817433423,Action|Drama|Romance
+43,Shooting Gallery,1995,1021726209,Crime|Drama|Thriller
+44,Blind Justice (Hævnens nat),1957,1221650259,Drama|Mystery|Thriller
+45,"Toxic Avenger Part III: The Last Temptation of Toxie, The",2003,1596473702,Comedy|Horror
+46,Taking Sides,2012,1067659261,Drama
+47,Romance on the High Seas,2011,1406329573,Comedy|Musical|Romance
+48,Jack Brooks: Monster Slayer,2007,1538350471,Action|Comedy|Horror
+49,Killing Season,2008,1266693056,Action|Thriller
+50,Rampage,1987,1354604413,Thriller
+51,"RKO Production 601: The Making of 'Kong, the Eighth Wonder of the World'",2004,1428683699,Documentary
+52,"Lady from Shanghai, The",2004,1356699321,Drama|Film-Noir|Mystery
+53,"Prize, The",2006,879892040,Drama|Mystery|Thriller
+54,I Want to Live!,2009,1222706399,Crime|Drama
+55,"Go-Getter, The",2000,1244129193,Comedy|Drama
+56,Loaded,2010,1000641975,Action|Crime|Drama|Thriller
+57,Street Fight,1994,1619049161,Documentary
+58,Leatherheads,2002,1080197883,Comedy|Drama|Romance
+59,Nowhere to Run,2008,951499204,Action|Romance
+60,Dancing Outlaw II: Jesco Goes to Hollywood,1986,1205362735,Documentary
+61,Two Ninas,1994,1658052279,Comedy|Romance
+62,Ski Patrol,2001,1026885166,Action|War
+63,Nightwatching,1992,1450259391,Drama|Mystery
+64,Alex in Wonderland,1999,976174379,Comedy|Drama
+65,Tell Me and I Will Forget,1993,839262191,Documentary
+66,Brick,1985,1183871066,Crime|Drama|Film-Noir|Mystery
+67,"Cross of Lorraine, The",2008,862431148,Drama|War
+68,"Life and Adventures of Santa Claus, The",2007,804074431,Animation|Children
+69,Lost in the Desert,2001,1504670578,Adventure|Drama|Thriller
+70,Mrs. Miniver,2010,824768468,Drama|War
+71,Atlantic City,1994,1483598237,Crime|Drama|Romance
+72,Stacy,2008,1249461048,Comedy|Horror
+73,Kira's Reason: A Love Story (En Kærlighedshistorie),1997,1259546225,Drama
+74,Gentlemen Prefer Blondes,1999,1121163658,Comedy|Musical|Romance
+75,Secret Things (Choses secrètes),2010,1054267570,Drama
+76,Caltiki the Undying Monster,1968,1453240908,Adventure|Horror|Sci-Fi|Thriller
+77,Patrice O'Neal: Elephant in the Room,1993,1054389732,Comedy
+78,Once in a Lifetime: The Extraordinary Story of the New York Cosmos,1998,1140445759,Documentary
+79,Follow That Dream,1984,1001985755,Comedy|Musical
+80,Two Little Boys,2011,1160621480,Comedy
+81,In Their Sleep (Dans ton sommeil),2003,1601077929,Horror|Thriller
+82,Behind the Burly Q: The Story of Burlesque in America,2011,1045606234,Documentary
+83,"Hour of the Pig, The",1997,910524186,Crime|Drama|Mystery
+84,Fade to Black,1985,1322307070,Documentary
+85,"End of the Affair, The",1992,860188675,Drama
+86,Lost and Delirious,2006,835042778,Drama
+87,Love Without Pity,1989,1473422155,Comedy|Romance
+88,Tokyo Gore Police (Tôkyô zankoku keisatsu),1999,837725706,Action|Horror
+89,Naked Gun 33 1/3: The Final Insult,1999,1588949053,Action|Comedy
+90,Nekromantik,1995,1173334183,Comedy|Horror
+91,Pure Luck,2000,1611114413,Comedy|Crime
+92,Rhapsody in Blue,2007,954204251,Drama|Musical
+93,Eastern Drift (Indigène d'Eurasie),1992,1004003052,Drama|Film-Noir|Thriller
+94,"Break-Up, The",1984,984570463,Comedy|Drama|Romance
+95,Tru Confessions,1996,981469910,Children|Comedy|Drama
+96,Breakdown,2003,1324764905,Action|Thriller
+97,Number Seventeen (a.k.a. Number 17),2005,1500878010,Thriller
+98,"Ella Lola, a la Trilby",1992,1579087777,(no genres listed)
+99,"Topo, El",2009,792568851,Fantasy|Western
+100,"Greatest Game Ever Played, The",2012,1133416132,Drama
