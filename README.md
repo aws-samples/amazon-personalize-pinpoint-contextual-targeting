@@ -191,7 +191,11 @@ aws s3 sync ./data/personalize s3://$PERSONALIZE_BUCKET
 
 #### Step 4: Review the infered segments from Amazon Personalize
 
-Once the training workflow is completed, navigate to the **Amazon Pinpoint console > Your Project > Segments**, there you should see two imported segments. One named `endpoints.csv` that contains all imported endpoints from Step 2. And another imported segment named `ITEMSgenresAction_<date>-<time>.csv` that contains the endpoints that are interested in action movies inferred by Amazon Personalize
+Once the training workflow is completed, you should receive an email on the email address you provided when deploying the stack. The email should look like the one in the screenshot below:
+
+![image](./docs/personalize-workflow-confirmation.png)
+
+Navigate to the Amazon Pinpoint Console > Your Project > Segments and you should see two imported segments. One named endpoints.csv that contains all imported endpoints from Step 2. And then a segment named ITEMSgenresAction_<date>-<time>.csv that contains the ids of endpoints that are interested in action movies inferred by Amazon Personalize
 
 ![image](./docs/imported-segments.png)
 
