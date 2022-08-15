@@ -58,7 +58,7 @@ USER_ID,ITEM_ID,EVENT_VALUE,EVENT_TYPE,TIMESTAMP
 
 ### Items’ dataset
 
-The item dataset describes each available movie using a **TITLE, RELEASE_YEAR, CREATION_TIMESTAMP** and a pipe concatenated list of **GENRES**.
+The item dataset describes each available movie using a `TITLE`, `RELEASE_YEAR`, `CREATION_TIMESTAMP` and a pipe concatenated list of `GENRES`.
 
 ```csv
 ITEM_ID,TITLE,RELEASE_YEAR,CREATION_TIMESTAMP,GENRES
@@ -70,7 +70,7 @@ ITEM_ID,TITLE,RELEASE_YEAR,CREATION_TIMESTAMP,GENRES
 
 ### Users' dataset
 
-The users dataset contains all known users identified by a **USER_ID**. This dataset contains artificially generated metadata that describe the users’ **GENDER** and **AGE**, as shown in the following example:
+The users dataset contains all known users identified by a `USER_ID`. This dataset contains artificially generated metadata that describe the users’ `GENDER` and `AGE`, as shown in the following example:
 
 ```csv
 USER_ID,GENDER,E_MAIL,AGE
