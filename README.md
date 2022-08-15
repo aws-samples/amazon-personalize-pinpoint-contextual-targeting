@@ -51,26 +51,26 @@ The `EVENT_VALUE` describes the actual rating from 1 to 5 and the `EVENT_TYPE` s
 ```csv
 USER_ID,ITEM_ID,EVENT_VALUE,EVENT_TYPE,TIMESTAMP
 1,1,4.0,Watch,964982703
-1,3,4.0,Watch,964981247
-1,6,4.0,Watch,964982224
+2,3,4.0,Watch,964981247
+3,6,4.0,Watch,964982224
 ...
 ```
 
 ### Items’ dataset
 
-The item dataset describes each available movie using a `TITLE`, `RELEASE_YEAR`, `CREATION_TIMESTAMP` and a pipe concatenated list of `GENRES`.
+The item dataset describes each available movie using a **TITLE, RELEASE_YEAR, CREATION_TIMESTAMP** and a pipe concatenated list of **GENRES**.
 
 ```csv
 ITEM_ID,TITLE,RELEASE_YEAR,CREATION_TIMESTAMP,GENRES
-1,"Toy Story ",1995,788918400,"Adventure|Animation|Children|Comedy|Fantasy"
-2,"Jumanji ",1995,788918400,"Adventure|Children|Fantasy"
-3,"Grumpier Old Men ",1995,788918400,Comedy|Romance
+1,Toy Story,1995,788918400,Adventure|Animation|Children|Comedy|Fantasy
+2,Jumanji,1995,788918400,Adventure|Children|Fantasy
+3,Grumpier Old Men,1995,788918400,Comedy|Romance
 ...
 ```
 
 ### Users' dataset
 
-The users dataset contains all known users identified by a `USER_ID`. This dataset contains artificially generated metadata that describe the users’ `GENDER` and `AGE`, as shown in the following example:
+The users dataset contains all known users identified by a **USER_ID**. This dataset contains artificially generated metadata that describe the users’ **GENDER** and **AGE**, as shown in the following example:
 
 ```csv
 USER_ID,GENDER,E_MAIL,AGE
