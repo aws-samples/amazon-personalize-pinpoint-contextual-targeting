@@ -1,6 +1,6 @@
-# Contextual segmentation demo application
+# Target your customers with ML based on their interest in a product or product attribute.
 
-This is the solution for the AWS blog post ["INSERT TITLE HERE"](#). This solution is based on the following reference architectures:
+This is the solution for the AWS blog post [Target your customers with ML based on their interest in a product or product attribute.](#). This solution is based on the following reference architectures:
 
 - [Maintaining Personalized Experiences with Machine Learning](https://aws.amazon.com/solutions/implementations/maintaining-personalized-experiences-with-ml/)
 - [Amazon S3 Triggered Endpoint Imports](https://github.com/aws-samples/communication-developer-services-reference-architectures#Amazon-S3-Triggered-Endpoint-Imports)
