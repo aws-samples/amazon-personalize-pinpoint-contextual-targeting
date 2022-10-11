@@ -49,6 +49,8 @@ Resources:
           - id: W51
             reason: Not public facing.
     Properties:
+      VersioningConfiguration:
+        Status: Enabled
       PublicAccessBlockConfiguration:
         BlockPublicAcls: True
         BlockPublicPolicy: True
