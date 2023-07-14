@@ -49,6 +49,9 @@ Resources:
           - id: W51
             reason: Not public facing.
     Properties:
+      OwnershipControls:
+        Rules:
+         - ObjectOwnership: BucketOwnerPreferred
       VersioningConfiguration:
         Status: Enabled
       PublicAccessBlockConfiguration:
