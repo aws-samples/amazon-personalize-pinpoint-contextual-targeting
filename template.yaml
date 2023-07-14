@@ -17,8 +17,8 @@ Parameters:
     Type: String
     AllowedPattern: "^v[0-9]\\.[0-9]\\.[0-9]$"
     ConstraintDescription: "Must be a valid semantic version starting with the prefix letter v"
-    Description: "Semantic version the personalization engine (e.g. v1.2.0)"
-    Default: v1.2.0
+    Description: "Semantic version the personalization engine (e.g. v1.4.1)"
+    Default: v1.4.1
 
   SegmentImportPrefix:
     Type: String
